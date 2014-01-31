@@ -11,3 +11,18 @@
 *.lai
 *.la
 *.a
+
+#netbeans generated
+Makefile
+nbproject
+
+#vim
+*.swp
+*.swo
+
+#binary build folders
+build
+dist
+
+#dunno
+.dep.inc
