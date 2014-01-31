@@ -7,13 +7,14 @@
 
 #include <cstdlib>
 #include <vector>
-#include <string>;
-#include <iostream>;
-#include <vector>;
-#include <algorithm> ;
-#include <math.h>;
-#include <stdio.h>;
-#include <time.h>;
+#include <string>
+#include <iostream>
+#include <vector>
+#include <algorithm> 
+#include <math.h>
+#include <stdio.h>
+#include <time.h>
+
 using namespace std;
 vector<int>* eratoshenes(int &till){
 
@@ -59,7 +60,9 @@ vector<int>* eratoshenes(int &till){
 	return results;
 };
 
-
+void println(string str){
+	cout << str << endl;
+};
 
 int main(int argc, char** argv) 
 {
@@ -67,32 +70,35 @@ int main(int argc, char** argv)
 	while(running){
 		string command = "";
 		int N = 0;
-		cout << "Voer een waarde in om priemgetallen te vinden" << endl;
+		println("Type help for a list off commands");
 		cin >> command;
 		if(command == "exit"){
 			running = false;
-		}else{
+		}else
+		if(command == "help"){
+			println("exit, to end the program");
+			println("p1a, to print an ascii document with prime years and 11 consective prime numbers that sum to that 'year'. It also contains a beautifull date and my name and even a title, wow");
+
+			println("any number to show a bunch of primes below that number");
+		}else
+		if(command == "p1a"){
+
+		}
+		else{
 			N = atoi(command.c_str());
 
 			try{
 
-				unsigned start = clock();
-				vector<int>* num = eratoshenes(N);
-				unsigned worked = clock()-start;
+				vector<int> primeNumbers = (*eratoshenes(N));
 
+				println("Prime numbers: ");
 
-				vector<int> primeNumbers = (*num);
-				delete num;
-
-				cout << "zie daar de priemgetallen: " << endl;
 				for(int i = 0; i < primeNumbers.size(); i++){
 
 					cout << primeNumbers[i] << ", ";
 				}
 				cout << endl;
-				cout << "en het duurde: " << worked << " miliseconden om ze te vinden, output tijd niet meegerekend" << endl;
 
-				
 			}catch(string s){
 				cout << s;
 			}
