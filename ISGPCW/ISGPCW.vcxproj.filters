@@ -30,12 +30,18 @@
     <ClInclude Include="ISGPCW.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PrimeNumberFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ISGPCW.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimeNumberFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

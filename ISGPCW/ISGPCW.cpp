@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "ISGPCW.h"
+#include <cstdlib>
 
 #define MAX_LOADSTRING 100
 
@@ -116,10 +117,19 @@ const unsigned width = 10;
 const unsigned height = 10;
 void onPaint(HDC* hdc, RECT* rect){
 
+	int cube_width =  (rect->right- rect->left) /width;
+	int cube_height = (rect->bottom - rect->top) /height;
 	for(int x = 0; x < width; x++){
 		for(int y = 0; y < height; y++){
+			SetTextColor(*hdc, RGB(211,32,111));
+			LPCWSTR str;
+			if(std::rand() % 100 > 70){
+				str = L"9";
+			}else{
+				str = L"0";
+			}
 
-			::DrawText(*hdc, L"9", 1, rect, 1);
+			TextOut(*hdc, x*cube_width, y*cube_height, str, 1);
 
 		}
 	}
@@ -154,20 +164,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case IDM_EXIT:
 			DestroyWindow(hWnd);
 			break;
-		case WM_PAINT:
-			HDC h = BeginPaint(hWnd, &ps);
-			RECT r;
-			GetClientRect(hWnd, &r);
-			onPaint(&h, &r);
-			EndPaint(hWnd, &ps);
-			break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		// TODO: Add any drawing code here...
+		RECT r;
+		GetClientRect(hWnd, &r);
+		onPaint(&hdc, &r);
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:

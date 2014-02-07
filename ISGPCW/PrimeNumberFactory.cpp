@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "PrimeNumberFactory.h"
 using namespace nl_jappieklooster;
 vector<int>* PrimeNumberFactory::eratoshenes(int &till){
@@ -6,7 +7,7 @@ vector<int>* PrimeNumberFactory::eratoshenes(int &till){
 
 
 	if(2 > till){
-		throw "Het nummer is kleiner als 2";
+		throw "Het nummer is kleiner dan 2";
 	}
 
 	// some optimilization
