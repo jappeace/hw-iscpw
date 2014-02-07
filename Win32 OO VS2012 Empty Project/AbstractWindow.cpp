@@ -1,21 +1,6 @@
 #include "AbstractWindow.h"
 #include <tchar.h>
 
-//////////////////////////////////////////////////////////////////
-// Static Initialisation
-//////////////////////////////////////////////////////////////////
-// what about avoid global state? Its imposibble now to open 2 windows...
-// I used a singleton to prevent this...
-static AbstractWindow * g_abstractWindow		= NULL;
-HINSTANCE AbstractWindow::_hInstance = GetModuleHandle(NULL);
-
-//////////////////////////////////////////////////////////////////
-// Connectivity WIN32 -> Class
-//////////////////////////////////////////////////////////////////
-LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-{
-	return g_abstractWindow->MsgProc(hWnd, uMsg, wParam, lParam);
-}
 
 //////////////////////////////////////////////////////////////////
 // Constructors/Destructors
@@ -68,7 +53,7 @@ HRESULT AbstractWindow::Create()
 	wcex.cbSize = sizeof(WNDCLASSEX); 
 
 	wcex.style			= CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc	= (WNDPROC)WndProc;
+	wcex.lpfnWndProc	= (WNDPROC)WindowProcedure;
 	wcex.cbClsExtra		= 0;
 	wcex.cbWndExtra		= 0;
 	wcex.hInstance		= _hInstance;

@@ -15,16 +15,15 @@ Window::~Window()
 // Member functions                  //
 /////////////////////////////////////
 
-void function(){
-
+INT_PTR CALLBACK dialogProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
+	return NULL;
 }
 LRESULT Window::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 		HINSTANCE h;
-		DLGPROC p;
 	switch(uMsg){
 	case WM_MENUCOMMAND:
-		DialogBox(h,MAKEINTRESOURCE(IDD_DIALOG1),NULL,p);
+		DialogBox(h,MAKEINTRESOURCE(IDD_DIALOG1),NULL,dialogProc);
 		break;
 	}
 

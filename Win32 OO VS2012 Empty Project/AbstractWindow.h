@@ -30,4 +30,19 @@ public:
 	 virtual LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM);
 };
 
+//////////////////////////////////////////////////////////////////
+// Static Initialisation
+//////////////////////////////////////////////////////////////////
+// what about avoid global state? Its imposibble now to open 2 windows...
+// I used a singleton to prevent this...
+static AbstractWindow * g_abstractWindow		= NULL;
+HINSTANCE AbstractWindow::_hInstance = GetModuleHandle(NULL);
+
+//////////////////////////////////////////////////////////////////
+// Connectivity WIN32 -> Class (yes class not object)
+//////////////////////////////////////////////////////////////////
+LRESULT CALLBACK WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	return g_abstractWindow->MsgProc(hWnd, uMsg, wParam, lParam);
+}
 #endif
