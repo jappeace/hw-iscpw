@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Point.h"
 namespace isgp{
 	Point::Point(int x, int y){

@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ISGPCW.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="PrimeNumberFactory.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -87,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ISGPCW.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="PrimeNumberFactory.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
