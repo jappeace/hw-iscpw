@@ -1,4 +1,5 @@
 #include "Window.h"
+namespace jappieklooster {
 /////////////////////////////////////
 // Constructors / Destructors      //
 /////////////////////////////////////
@@ -40,15 +41,16 @@ void onPaint(HDC* hdc, RECT* rect){
 	for(int x = 0; x < width; x++){
 		for(int y = 0; y < height; y++){
 			SetTextColor(*hdc, RGB(211,32,111));
-			LPCWSTR str;
+			LPCSTR str;
 			if(std::rand() % 100 > 70){
-				str = L"9";
+				str = "9";
 			}else{
-				str = L"0";
+				str = "0";
 			}
 
 			TextOut(*hdc, x*cube_width, y*cube_height, str, 1);
 
 		}
 	}
+}
 }
