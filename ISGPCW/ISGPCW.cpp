@@ -112,7 +112,18 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    return TRUE;
 }
+const unsigned width = 10;
+const unsigned height = 10;
+void onPaint(HDC* hdc, RECT* rect){
 
+	for(int x = 0; x < width; x++){
+		for(int y = 0; y < height; y++){
+
+			::DrawText(*hdc, L"9", 1, rect, 1);
+
+		}
+	}
+}
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -142,6 +153,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			break;
 		case IDM_EXIT:
 			DestroyWindow(hWnd);
+			break;
+		case WM_PAINT:
+			HDC h = BeginPaint(hWnd, &ps);
+			RECT r;
+			GetClientRect(hWnd, &r);
+			onPaint(&h, &r);
+			EndPaint(hWnd, &ps);
 			break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
