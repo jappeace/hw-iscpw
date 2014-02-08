@@ -32,7 +32,7 @@ namespace jappieklooster {
 	 */
 	class Grid{
 	private:
-		vector<Tile*>* _tiles;
+		vector<Tile>* _tiles;
 		unsigned _tilesLength;
 		static const unsigned C_default_h = 20;
 		static const unsigned C_default_w = 20;
