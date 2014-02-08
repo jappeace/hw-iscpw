@@ -19,19 +19,6 @@ Window::~Window()
 INT_PTR CALLBACK dialogProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
 	return NULL;
 }
-LRESULT Window::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-{
-		HINSTANCE h;
-	switch(uMsg){
-	case WM_MENUCOMMAND:
-		DialogBox(h,MAKEINTRESOURCE(IDD_DIALOG1),NULL,dialogProc);
-		break;
-	}
-
-	return AbstractWindow::MsgProc(hWnd, uMsg, wParam, lParam);
-}
-
-
 const unsigned width = 10;
 const unsigned height = 10;
 void onPaint(HDC* hdc, RECT* rect){
@@ -53,4 +40,25 @@ void onPaint(HDC* hdc, RECT* rect){
 		}
 	}
 }
+
+LRESULT Window::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+		HDC hdc;
+		LPRECT windowSize = new RECT();
+		PAINTSTRUCT paintStructure;
+		GetClientRect(hWnd, windowSize);
+
+	switch(uMsg){
+	case WM_PAINT:
+		hdc = BeginPaint(hWnd, &paintStructure);
+		onPaint(&hdc, windowSize);
+		EndPaint(hWnd, &paintStructure);
+		break;
+	}
+
+	delete windowSize;
+	return AbstractWindow::MsgProc(hWnd, uMsg, wParam, lParam);
+}
+
+
 }

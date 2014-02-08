@@ -1,12 +1,12 @@
 #pragma once
 #include "Point.h"
 namespace jappieklooster{
-	class Mine
+	class Tile
 	{
 	public:
-		Mine(Point position);
-		Mine(int x, int y);
-		~Mine();
+		Tile(Point position);
+		Tile(int x, int y);
+		~Tile();
 	private:
 		Point _position;
 	};

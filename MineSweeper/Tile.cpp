@@ -1,17 +1,17 @@
-#include "Mine.h"
+#include "Tile.h"
 
 namespace jappieklooster {
 
-Mine::Mine(Point position)
+Tile::Tile(Point position)
 {
 	_position = position;
 }
 
-Mine::Mine(int x, int y){
+Tile::Tile(int x, int y){
 	_position = Point(x, y);
 }
 
-Mine::~Mine(void)
+Tile::~Tile(void)
 {
 }
 
