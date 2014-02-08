@@ -63,14 +63,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractWindow.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Size.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractWindow.h" />
+    <ClInclude Include="Exceptions.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="IGridTraveller.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Size.h" />
+    <ClInclude Include="StrConverter.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
