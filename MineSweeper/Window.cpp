@@ -3,10 +3,7 @@ namespace jappieklooster {
 /////////////////////////////////////
 // Constructors / Destructors      //
 /////////////////////////////////////
-Window::Window()
-{
-	_mineField = Grid(10,10);
-}
+Window::Window() : _mineField(10,10) {}
 
 Window::~Window()
 {
