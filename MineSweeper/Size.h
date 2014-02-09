@@ -10,6 +10,7 @@
 namespace jappieklooster {
 	class Size {
 	public:
+		Size();
 		Size(unsigned  width,unsigned  height);
 		void SetHeight(unsigned  _height);
 		unsigned  GetHeight() const;

@@ -1,18 +1,23 @@
 #pragma once
+#include <algorithm>
 #include "Grid.h"
 #include "Graphics.h"
 namespace jappieklooster{
 
-	class MineField
+	class MineField : IGridTraveller
 	{
 	public:
 		MineField(int width, int height);
 		MineField(Grid* g);
 		MineField(void);
 		~MineField(void);
-		void paint(Graphics* g);
+		void paint(Graphics* g, Size& mineSize);
+		void receiveTile(Tile* tile);
+        Size* getSize() const;
 	private:
-		vector<Tile>* _mines;
+		Graphics* _graphics;
+		Size _mineSize;
+		vector<Tile*>* _mines;
 		Grid* _grid;
 		void init(Grid* g);
 		bool isInMines(Tile& tile);

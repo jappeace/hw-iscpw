@@ -4,6 +4,10 @@ namespace jappieklooster{
 		_width = width;
 		_height = height;
 	}
+	Size::Size(){
+		_width =0;
+		_height=0;
+	}
 
 	void Size::SetHeight(unsigned  _height) {
 		this->_height = _height;
