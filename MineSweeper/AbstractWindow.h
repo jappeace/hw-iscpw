@@ -46,6 +46,7 @@ namespace jappieklooster {
 		 * This method forces subclasses to implement the onpaint
 		 */
 		 virtual void onPaint(Graphics* graphics) = 0; // this also makes the class abstract
+		 virtual void onCommand(int from, int command) = 0;
 	};
 
 }

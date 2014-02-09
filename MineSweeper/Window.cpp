@@ -26,6 +26,9 @@ void Window::onPaint(Graphics* g){
 	);
 }
 
+void Window::onCommand(int from, int command){
+
+}
 LRESULT Window::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	return AbstractWindow::MsgProc(hWnd, uMsg, wParam, lParam);

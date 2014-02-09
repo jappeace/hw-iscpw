@@ -98,13 +98,9 @@ HRESULT AbstractWindow::Create()
 
 LRESULT AbstractWindow::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	int wmId;
-	int wmEvent;
 	HDC hdc;
-	_windowSize = new RECT();
 	PAINTSTRUCT paintStructure;
-	GetClientRect(hWnd, _windowSize);
-	Graphics* graphics = new Graphics();
+	Graphics* graphics = NULL;
 
 	if (!_hWnd){
 		_hWnd = hWnd;
@@ -113,23 +109,32 @@ LRESULT AbstractWindow::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 	switch (uMsg) 
 	{
 		case WM_COMMAND:
-			wmId    = LOWORD(wParam); 
-			wmEvent = HIWORD(wParam); 
+			onCommand(LOWORD(wParam),HIWORD(wParam));
 			break;
+
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			break;
+
 		case WM_PAINT:
+			_windowSize = new RECT();
+			GetClientRect(hWnd, _windowSize);
+			graphics = new Graphics();
+
 			hdc = BeginPaint(hWnd, &paintStructure);
 			graphics->setHDC(hdc);
+
 			onPaint(graphics);
+
 			EndPaint(hWnd, &paintStructure);
+
+			delete _windowSize;
+			delete graphics;
 			break;
+
 		default:
 			return DefWindowProc(hWnd, uMsg, wParam, lParam);
 	}
-	delete _windowSize;
-	delete graphics;
 	return 0;
 }
 

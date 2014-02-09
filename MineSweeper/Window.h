@@ -12,6 +12,7 @@ namespace jappieklooster {
 		Window();
 		~Window();
 		void onPaint(Graphics* graphics);
+		void onCommand(int from, int command);
 		LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM);
 	private:
 		MineField _mineField;
