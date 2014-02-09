@@ -31,6 +31,39 @@ namespace jappieklooster {
 	 * which inherits from the interface like IGridTraveller
 	 */
 	class Grid{
+	public:
+
+		/** default constructor will use the C_default_size for initiliztion */
+		Grid();
+		/** initialize the grid to the specified size*/
+		Grid(unsigned width, unsigned height);
+		/**
+		 * destructor
+		 */
+		~Grid();
+
+		/**
+		 * retrieve tile at postiotion
+		 */
+		Tile* getTileAt(unsigned x, unsigned y) const;
+		/**
+		 * shorthand for getTileAt(int x, int y)
+		 */
+		Tile* getTileAt(Point& p) const;
+
+		/**
+		 * The given function pointer will receive all the tiles and coordinates in the specified row
+		 */
+		void traverseRow(unsigned y, IGridTraveller* travellar);
+		/**
+		 * The given function pointer will receive all the tiles and coordinates in the specified collumn
+		 */
+		void traverseCollumn(unsigned x, IGridTraveller* travellar);
+		/**
+		 * The given function pointer will receive all the tiles in the grid and the cordiantes of them.
+		 */
+		void traverseTiles(IGridTraveller* travellar);
+        Size* getSize() const;
 	private:
 		vector<Tile>* _tiles;
 		unsigned _tilesLength;
@@ -63,40 +96,7 @@ namespace jappieklooster {
          * @param y
          * @return the index
          */
-		unsigned getTileIndex(unsigned x, unsigned y);
-	public:
-
-		/** default constructor will use the C_default_size for initiliztion */
-		Grid();
-		/** initialize the grid to the specified size*/
-		Grid(unsigned width, unsigned height);
-		/**
-		 * destructor
-		 */
-		~Grid();
-
-		/**
-		 * retrieve tile at postiotion
-		 */
-		Tile* getTileAt(unsigned x, unsigned y);
-		/**
-		 * shorthand for getTileAt(int x, int y)
-		 */
-		Tile* getTileAt(Point& p);
-
-		/**
-		 * The given function pointer will receive all the tiles and coordinates in the specified row
-		 */
-		void traverseRow(unsigned y, IGridTraveller* travellar);
-		/**
-		 * The given function pointer will receive all the tiles and coordinates in the specified collumn
-		 */
-		void traverseCollumn(unsigned x, IGridTraveller* travellar);
-		/**
-		 * The given function pointer will receive all the tiles in the grid and the cordiantes of them.
-		 */
-		void traverseTiles(IGridTraveller* travellar);
-        Size* getSize() const;
+		unsigned getTileIndex(unsigned x, unsigned y) const;
 	};
 }
 

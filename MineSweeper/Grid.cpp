@@ -3,10 +3,10 @@ using namespace std;
 namespace jappieklooster {
 
 	void Grid::traverse(unsigned x, unsigned y, IGridTraveller* traveller) {
-		traveller->receiveTile(getTileAt(x, y), new Point(x, y));
+		traveller->receiveTile(getTileAt(x, y));
 	}
 
-	unsigned Grid::getTileIndex(unsigned x, unsigned y) {
+	unsigned Grid::getTileIndex(unsigned x, unsigned y) const {
 		return x + y * _size->GetWidth();
 	}
 
@@ -113,7 +113,7 @@ namespace jappieklooster {
 				+ "y: " + StrConverter::intToString(y);
 	};
 
-	Tile* Grid::getTileAt(unsigned x, unsigned y) {
+	Tile* Grid::getTileAt(unsigned x, unsigned y) const {
 		unsigned desiredIndex = getTileIndex(x, y);
 		if (desiredIndex < 0) {
 			sizeMessage(x, y);
@@ -124,7 +124,7 @@ namespace jappieklooster {
 		return &_tiles->at(desiredIndex);
 	}
 
-	Tile* Grid::getTileAt(Point& p) {
+	Tile* Grid::getTileAt(Point& p) const {
 		return getTileAt(p.GetX(), p.GetY());
 	}
 

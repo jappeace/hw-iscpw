@@ -16,14 +16,6 @@ using namespace std;
 namespace jappieklooster {
 
 	class GridToLargeException : public std::runtime_error {
-	private:
-		unsigned _width;
-		unsigned _height;
-		// just keep track of x and y for debuging
-		void init(unsigned width, unsigned height) {
-			_width = width;
-			_height = height;
-		};
 	public:
 
 		GridToLargeException(const string& message, unsigned width, unsigned height)
@@ -37,6 +29,14 @@ namespace jappieklooster {
 			init(0, 0);
 		};
 
+	private:
+		unsigned _width;
+		unsigned _height;
+		// just keep track of x and y for debuging
+		void init(unsigned width, unsigned height) {
+			_width = width;
+			_height = height;
+		};
 	};
 }
 #endif	/* EXCEPTIONS_H */

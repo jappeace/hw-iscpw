@@ -6,16 +6,16 @@
 #include "resource.h"
 #include "Grid.h"
 namespace jappieklooster {
-class Window : public AbstractWindow
-{
-public:
-	Window();
-	~Window();
-	void onPaint(Graphics* graphics);
-	LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM);
-private:
-	Grid _mineField;
-};
+	class Window : public AbstractWindow
+	{
+	public:
+		Window();
+		~Window();
+		void onPaint(Graphics* graphics);
+		LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM);
+	private:
+		Grid _mineField;
+	};
 
 }
 #endif

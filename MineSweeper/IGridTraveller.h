@@ -18,7 +18,7 @@ namespace jappieklooster{
 	class IGridTraveller{
 
 	public:
-		virtual void receiveTile(Tile* tile, Point* coordinates) = 0;
+		virtual void receiveTile(Tile* tile) = 0;
 
 	};
 }
