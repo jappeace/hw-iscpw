@@ -80,12 +80,15 @@
     <ClInclude Include="MineField.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource.aps" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc">
+    <ResourceCompile Include="MineSweeper1.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

@@ -81,6 +81,7 @@
     <ClInclude Include="MineField.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="resource2.h" />
     <ClInclude Include="Size.h" />
     <ClInclude Include="StrConverter.h" />
     <ClInclude Include="Tile.h" />
@@ -90,7 +91,7 @@
     <None Include="Resource.aps" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc" />
+    <ResourceCompile Include="MineSweeper1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
