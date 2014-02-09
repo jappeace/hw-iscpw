@@ -5,10 +5,11 @@ namespace jappieklooster{
 		return find(_mines->begin(), _mines->end(), &tile)!=_mines->end();
 	}
 	void MineField::init(Grid* grid){
+		srand (time(NULL)); // because randomness needs to be initilized...
 		_grid = grid;	
 		unsigned width = _grid->getSize()->GetWidth();
 		unsigned height = _grid->getSize()->GetHeight();
-		unsigned mineCount =rand() % (int)( width*height * 0.3);
+		unsigned mineCount =rand() % ((int)( width*height * 0.3));
 				
 		_mines = new vector<Tile*>(mineCount);
 

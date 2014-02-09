@@ -1,5 +1,6 @@
 #pragma once
 #include <algorithm>
+#include <time.h>
 #include "Grid.h"
 #include "Graphics.h"
 namespace jappieklooster{
