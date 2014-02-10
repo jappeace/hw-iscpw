@@ -16,14 +16,17 @@ namespace jappieklooster{
 		void receiveTile(Tile* tile);
         Size* getSize() const;
 		int countMinesInAdjecentRow(Tile* tile);
+		void paintBackgroundColor(Tile* tile);
 	private:
 		Graphics* _graphics;
 		Size _mineSize;
 		vector<Tile*>* _mines;
+		vector<Tile*>* _visibleMines;
 		Grid* _grid;
 		void init(Grid* g);
-		bool isInMines(Tile& tile);
+		bool isInMines(Tile* tile);
 		int determinDisplayValue(Tile* receivedTile);
+		bool isInvisible(Tile* tile);
 	};
 
 

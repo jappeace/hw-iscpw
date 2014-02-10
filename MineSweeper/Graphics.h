@@ -17,6 +17,7 @@ namespace jappieklooster{
 		void drawStr(Point& position, string str);
 		void drawStr(Point& position, const char* str, int length);
 		void setTextColor(COLORREF color);
+		void setTextBackgroundColor(COLORREF color);
 	private:
 		/**
 		* win 32 uses somthing called a HDC, which is a handle to the 

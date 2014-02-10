@@ -24,4 +24,7 @@ namespace jappieklooster{
 	void Graphics::setTextColor(COLORREF color){
 		SetTextColor(*_hdc, color);
 	}
+	void Graphics::setTextBackgroundColor(COLORREF color){
+		SetBkColor(*_hdc, color);
+	}
 }
