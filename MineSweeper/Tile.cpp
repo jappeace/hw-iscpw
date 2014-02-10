@@ -8,6 +8,10 @@ namespace jappieklooster{
 	}
 	void Tile::init(Point* p){
 		_position = p;
+		_bottom = NULL;
+		_top = NULL;
+		_left = NULL;
+		_right = NULL;
 	}
 	void Tile::SetBottom(Tile* bottom) {
 		this->_bottom = bottom;

@@ -15,6 +15,7 @@ namespace jappieklooster{
 		void paint(Graphics* g, Size& mineSize);
 		void receiveTile(Tile* tile);
         Size* getSize() const;
+		int countMinesInAdjecentRow(Tile* tile);
 	private:
 		Graphics* _graphics;
 		Size _mineSize;
@@ -22,7 +23,7 @@ namespace jappieklooster{
 		Grid* _grid;
 		void init(Grid* g);
 		bool isInMines(Tile& tile);
-		int countNeighbouringMines(Tile& tile);
+		int determinDisplayValue(Tile* receivedTile);
 	};
 
 

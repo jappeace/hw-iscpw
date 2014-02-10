@@ -53,12 +53,7 @@ namespace jappieklooster{
 		_grid->traverseTiles(this);
 	} 
 	void MineField::receiveTile(Tile* tile){
-		LPCSTR str;
-		if(isInMines(*tile)){
-			str = "9";
-		}else{
-			str = "0";
-		}
+		string str = StrConverter::intToString(determinDisplayValue(tile));
 		Point* position = new Point(
 			tile->GetPosition()->GetX() * _mineSize.GetWidth(), 
 			tile->GetPosition()->GetY() * _mineSize.GetHeight()
@@ -68,4 +63,37 @@ namespace jappieklooster{
 
 		delete position;
 	}
+
+	int MineField::determinDisplayValue(Tile* tile){
+		if (isInMines(*tile)){
+			return 9;
+		}
+		int result = 0;
+		result += countMinesInAdjecentRow(tile->GetTop());
+		result += countMinesInAdjecentRow(tile->GetBottom());
+		if(tile->GetLeft() && isInMines(*tile->GetLeft())){
+			result++;
+		}
+		if(tile->GetRight() && isInMines(*tile->GetRight())){
+			result++;
+		}
+		return result;
+	}
+	int MineField::countMinesInAdjecentRow(Tile* tile){
+		int result = 0;
+		if(tile == NULL){
+			return result;
+		}
+		if(isInMines(*tile)){
+			result++;
+		}
+		if(tile->GetLeft() && isInMines(*tile->GetLeft())){
+			result++;
+		}
+		if(tile->GetRight() && isInMines(*tile->GetRight())){
+			result++;
+		}
+		return result;
+	}
+
 }
