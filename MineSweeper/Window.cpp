@@ -27,7 +27,10 @@ void Window::onPaint(Graphics* g){
 }
 
 void Window::onCommand(int from, int command){
-
+	if(ID_FILE_NEWGAME == from){
+		_mineField = MineField(10,10);
+		this->repaint();
+	}
 }
 LRESULT Window::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {

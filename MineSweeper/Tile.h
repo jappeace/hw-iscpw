@@ -8,11 +8,13 @@
 #ifndef TILE_H
 #define	TILE_H
 #include "Point.h"
+#include <cstdlib>
 namespace jappieklooster {
 	class Tile {
 	public:
 		Tile(Point* p);
 		Tile(int x, int y);
+		~Tile();
 		void SetBottom(Tile* bottom);
 		Tile* GetBottom() const;
 		void SetRight(Tile* right);

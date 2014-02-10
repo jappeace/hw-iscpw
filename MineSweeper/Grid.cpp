@@ -34,10 +34,10 @@ namespace jappieklooster {
 		_tilesLength = (unsigned) (width * height);
 		gaurdInit(width, height);
 		_size = new Size(width, height);
-		_tiles = new vector<Tile>();
+		_tiles = new vector<Tile*>();
 		for (unsigned y = 0; y < height; y++) {
 			for (unsigned x = 0; x < width; x++) {
-				_tiles->push_back(Tile(x, y));
+				_tiles->push_back(new Tile(x, y));
 			}
 		}
 		// bind tiles to each other
@@ -46,32 +46,32 @@ namespace jappieklooster {
 
 				try {
 					if (y < height - 2) {
-						_tiles->at(getTileIndex(x, y)).SetTop(
-								&_tiles->at(
+						_tiles->at(getTileIndex(x, y))->SetTop(
+								_tiles->at(
 								getTileIndex(x, y + 1)
 								)
 								);
 					}
 
 					if (y != 0) {
-						_tiles->at(getTileIndex(x, y)).SetBottom(
-								&_tiles->at(
+						_tiles->at(getTileIndex(x, y))->SetBottom(
+								_tiles->at(
 								getTileIndex(x, y - 1)
 								)
 								);
 					}
 
 					if (x < width - 2) {
-						_tiles->at(getTileIndex(x, y)).SetRight(
-								&_tiles->at(
+						_tiles->at(getTileIndex(x, y))->SetRight(
+								_tiles->at(
 								getTileIndex(x + 1, y)
 								)
 								);
 					}
 
 					if (x != 0) {
-						_tiles->at(getTileIndex(x, y)).SetLeft(
-								&_tiles->at(
+						_tiles->at(getTileIndex(x, y))->SetLeft(
+								_tiles->at(
 								getTileIndex(x - 1, y)
 								)
 								);
@@ -100,8 +100,16 @@ namespace jappieklooster {
 	}
 
 	Grid::~Grid() {
-		delete _tiles;
-		delete _size;
+		if(_tiles){
+			delete _tiles;
+		}
+		if(_size){
+			delete _size;
+		}
+		_tiles = NULL;
+		_size = NULL;
+
+
 	}
 
 	void sizeMessage(unsigned x, unsigned y) {
@@ -121,7 +129,7 @@ namespace jappieklooster {
 		if (desiredIndex >= _tilesLength) {
 			sizeMessage(x, y);
 		}
-		return &_tiles->at(desiredIndex);
+		return _tiles->at(desiredIndex);
 	}
 
 	Tile* Grid::getTileAt(Point& p) const {

@@ -12,6 +12,7 @@ namespace jappieklooster {
 	public:
 		Point();
 		Point(int x, int y);
+		~Point();
 		void SetY(double _y);
 		double GetY() const;
 		void SetX(double _x);

@@ -65,7 +65,7 @@ namespace jappieklooster {
 		void traverseTiles(IGridTraveller* travellar);
         Size* getSize() const;
 	private:
-		vector<Tile>* _tiles;
+		vector<Tile*>* _tiles;
 		unsigned _tilesLength;
 		static const unsigned C_default_h = 20;
 		static const unsigned C_default_w = 20;

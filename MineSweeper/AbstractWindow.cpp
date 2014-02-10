@@ -138,4 +138,7 @@ LRESULT AbstractWindow::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 	return 0;
 }
 
+void AbstractWindow::repaint(){
+	RedrawWindow( _hWnd, NULL, NULL, RDW_INTERNALPAINT);
+}
 }

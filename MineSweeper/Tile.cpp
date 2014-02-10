@@ -44,4 +44,27 @@ namespace jappieklooster{
     Point* Tile::GetPosition() const {
     	return _position;
     }
+	Tile::~Tile(){
+
+		if(_top){
+			delete _top;
+		}
+		if(_left){
+			delete _left;
+		}
+		if(_right){
+			delete _right;
+		}
+		if(_bottom){
+			delete _bottom;
+		}
+		if(_position){
+			delete _position;
+		}
+		_position = NULL;
+		_top = NULL;
+		_left = NULL;
+		_right = NULL;
+		_bottom = NULL;
+	}
 }

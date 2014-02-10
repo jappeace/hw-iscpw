@@ -42,6 +42,7 @@ namespace jappieklooster {
 		 int Run();
 		 virtual ~AbstractWindow();
 		 virtual LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM);
+		 void repaint();
 		 /**
 		 * This method forces subclasses to implement the onpaint
 		 */
