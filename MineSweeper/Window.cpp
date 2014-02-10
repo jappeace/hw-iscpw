@@ -1,11 +1,13 @@
 #include "Window.h"
 namespace jappieklooster {
+const int fieldWidth = 20;
+const int fieldHeight = 20;
 /////////////////////////////////////
 // Constructors / Destructors      //
 /////////////////////////////////////
 Window::Window() {
 	srand (time(NULL)); // because randomness needs to be initilized...
-	_mineField = new MineField(10,10);
+	_mineField = new MineField(fieldWidth,fieldHeight);
 }
 
 Window::~Window()
@@ -30,10 +32,25 @@ void Window::onPaint(Graphics* g){
 }
 
 void Window::onCommand(int from, int command){
-	if(ID_FILE_NEWGAME == from){
+	switch(from){
+	case ID_FILE_NEWGAME:
 		delete _mineField;
-		_mineField = new MineField(10,10);
+		_mineField = new MineField(fieldHeight,fieldWidth);
 		this->repaint();
+		break;
+	case ID_HELP_ABOUT:
+		MessageBox(
+			_hWnd,
+			// message:
+			"Copyright Jappie Klooster, Program version: Awesome",
+			// title:
+			"Licensed under GPL v3",
+			MB_OK | MB_ICONEXCLAMATION
+		);
+		break;
+	case ID_FILE_EXIT:
+		PostQuitMessage(0);
+		break;
 	}
 }
 LRESULT Window::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)

@@ -22,6 +22,7 @@ namespace jappieklooster{
 		Grid* _grid;
 		void init(Grid* g);
 		bool isInMines(Tile& tile);
+		int countNeighbouringMines(Tile& tile);
 	};
 
 
