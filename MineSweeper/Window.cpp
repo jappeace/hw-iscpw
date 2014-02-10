@@ -3,7 +3,10 @@ namespace jappieklooster {
 /////////////////////////////////////
 // Constructors / Destructors      //
 /////////////////////////////////////
-Window::Window() : _mineField(10,10) {}
+Window::Window() {
+	srand (time(NULL)); // because randomness needs to be initilized...
+	_mineField = new MineField(10,10);
+}
 
 Window::~Window()
 {
@@ -17,18 +20,19 @@ INT_PTR CALLBACK dialogProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
 	return NULL;
 }
 void Window::onPaint(Graphics* g){
-	_mineField.paint(g,
+	_mineField->paint(g,
 		// calculate the size of the individual mines
 		Size(
-			(_windowSize->right  - _windowSize->left)	/ _mineField.getSize()->GetWidth(),
-			(_windowSize->bottom - _windowSize->top)	/ _mineField.getSize()->GetHeight()
+			(_windowSize->right  - _windowSize->left)	/ _mineField->getSize()->GetWidth(),
+			(_windowSize->bottom - _windowSize->top)	/ _mineField->getSize()->GetHeight()
 		)
 	);
 }
 
 void Window::onCommand(int from, int command){
 	if(ID_FILE_NEWGAME == from){
-		_mineField = MineField(10,10);
+		delete _mineField;
+		_mineField = new MineField(10,10);
 		this->repaint();
 	}
 }

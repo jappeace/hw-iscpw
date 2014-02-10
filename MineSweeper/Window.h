@@ -15,7 +15,7 @@ namespace jappieklooster {
 		void onCommand(int from, int command);
 		LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM);
 	private:
-		MineField _mineField;
+		MineField* _mineField;
 	};
 
 }

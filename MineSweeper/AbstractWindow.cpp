@@ -58,7 +58,8 @@ int AbstractWindow::Run()
 			DispatchMessage(&msg);
 		}
 
-	}	return msg.wParam;
+	}	
+	return msg.wParam;
 }
 
 HRESULT AbstractWindow::Create()
@@ -139,6 +140,6 @@ LRESULT AbstractWindow::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 }
 
 void AbstractWindow::repaint(){
-	RedrawWindow( _hWnd, NULL, NULL, RDW_INTERNALPAINT);
+	InvalidateRect(_hWnd, 0, TRUE);
 }
 }
