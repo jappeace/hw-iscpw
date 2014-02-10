@@ -13,7 +13,7 @@ namespace jappieklooster{
 	public:
 		Graphics(void);
 		~Graphics(void);
-		void setHDC(HDC& hdc);
+		void setHDC(HDC* hdc);
 		void drawStr(Point& position, string str);
 		void drawStr(Point& position, const char* str, int length);
 		void setTextColor(COLORREF color);
@@ -24,6 +24,6 @@ namespace jappieklooster{
 		* putting it in the class allows all drawing functions to call this after setting it once
 		* in the abstractWindow
 		*/
-		HDC _hdc;
+		HDC* _hdc;
 	};
 }

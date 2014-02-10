@@ -122,7 +122,7 @@ LRESULT AbstractWindow::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 			graphics = new Graphics();
 
 			hdc = BeginPaint(hWnd, &paintStructure);
-			graphics->setHDC(hdc);
+			graphics->setHDC(&hdc);
 
 			onPaint(graphics);
 

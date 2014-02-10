@@ -42,12 +42,8 @@ namespace jappieklooster{
 		if(_mines){
 			delete _mines;
 		}
-		if(_graphics){
-			delete _graphics;
-		}
 		_grid = NULL;
 		_mines = NULL;
-		_graphics = NULL;
 	}
 	Size* MineField::getSize() const{
 		return _grid->getSize();
